@@ -1,0 +1,166 @@
+<div id="page-wrapper" class="col-lg-10" style="background-color: #6a6a6a">
+
+    <div style="border-radius: 8px;border: 2px solid #aea2cc;padding: 2px;margin: 2px;margin-top: 15px;background-color: #ffffff">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <br/>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i> Master Data
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-bank"></i> Exam Details
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="horizontal-form">
+                                    <form role="form">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="#" class="col-sm-3 control-label">Department</label>
+                                                    <div class="col-sm-4">
+                                                        <select class="form-control">
+
+                                                            <option>chemistry</option>
+                                                            <option>Zoology</option>
+                                                            <option>Statistics</option>
+                                                            <option>Plant Sciences</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="#" class="col-sm-3 control-label">Course</label>
+                                                    <div class="col-sm-4">
+                                                        <select class="form-control">
+
+                                                            <option>chemistry</option>
+                                                            <option>Zoology</option>
+                                                            <option>Statistics</option>
+                                                            <option>Plant Sciences</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="code" class="col-sm-3 control-label">Exam Code</label>
+                                                    <div class="col-sm-4">
+                                                        <input id="code" type="code" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="email" class="col-sm-3 control-label">Exam Name</label>
+                                                    <div class="col-sm-8">
+                                                        <input id="email" type="email" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="email" class="col-sm-3 control-label">Description</label>
+                                                    <div class="col-sm-8">
+                                <textarea cols="60" rows="6" id="cityDescription" name="cityDescription" type="text"
+                                          ng-model="newCity.cityDesc"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="#" class="col-sm-3 control-label"></label>
+                                                    <div class="col-sm-4">
+                                                        <button type="submit" class="btn btn-success">Save</button>
+                                                        <button type="reset" class="btn btn-warning">Reset</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="generalTable">
+                        <thead>
+                        <tr>
+                            <th>Exam Code</th>
+                            <th>Exam Name</th>
+                            <th>Course</th>
+                            <th>Department</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="text-align: left;width: 10%;">E001</td>
+                            <td style="text-align: left;width: 15%;">First Semester exam</td>
+                            <td style="text-align: left;width: 15%;">Post Graduate</td>
+                            <td style="text-align: left;width: 15%;">Science</td>
+                            <td style="text-align: left;width: 35%;">Some description about the payment</td>
+                            <td style="text-align: center;width: 5%;">
+                                <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal"
+                                        data-target=".bs-example-modal-lg"> Update
+                                </button>
+                            </td>
+                            <td style="text-align: center;width: 5%;">
+                                <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target=".bs-example-modal-lg"> Remove
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <br/>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+</div>
+<!-- /#page-wrapper -->

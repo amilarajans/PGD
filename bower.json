@@ -1,0 +1,23 @@
+{
+  "name": "pgd",
+  "authors": [
+    "Manoj Janaka <manojjanaka@gmail.com>"
+  ],
+  "description": "project for pgd",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angucomplete-alt": "^2.4.1",
+    "angular-filter": "^0.5.11",
+    "moment": "^2.14.1"
+  }
+}

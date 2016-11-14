@@ -1,0 +1,125 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PGD Student Management System</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" type="image/ico" href="favicon.ico">
+
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/select2.css" rel="stylesheet">
+    <link href="additional_components/ui-select/dist/select.css" rel="stylesheet">
+    <link href="additional_components/ng-grid/ng-grid-2.0.14.min.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/sb-admin.css" rel="stylesheet">
+    <link href="styles/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="additional_components/toastr/angular-toastr.min.css" rel="stylesheet" type="text/css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="additional_components/libs/html5shiv.js"></script>
+    <script src="additional_components/libs/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-app="activitiAdminApp" style="background-color: #6a6a6a">
+<!--Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-show="authenticated" ng-cloak role="navigation">
+    <div class="container-fluid" style="padding-top: 3px;border-bottom: 2px solid #aea2cc;" >
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img src="../images/Faculty_of_science_colombo_logo.png" style="height: 60px;width: auto">
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#">Home</a></li>
+            <li ng-class="{active: navigation.selection == 'course'}"><a href="#courseMaster">Courses</a></li>
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#courseWisePaymentMaster">Courses Payments</a></li>
+            <li ng-class="{active: navigation.selection == 'department'}"><a href="#departmentMaster">Departments</a></li>
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#examsMaster">Exams</a></li>
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#studentMaster">Student</a></li>
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#examResults">Exam Results</a></li>
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#studentPayments">Student Payments</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="alert-wrapper" ng-cloak>
+    <div class="alert fadein {{alerts.current.type}}" ng-show="alerts.current" ng-click="dismissAlert()">
+        <i class="glyphicon"
+           ng-class="{'glyphicon-ok': alerts.current.type == 'info', 'glyphicon-remove': alerts.current.type == 'error'}"></i>
+        <span>{{alerts.current.message}}</span>
+        <div class="pull-right" ng-show="alerts.queue.length > 0">
+            <span class="badge">{{alerts.queue.length + 1}}</span>
+        </div>
+    </div>
+</div>
+
+<div ng-view="" ng-cloak ></div>
+<script type="text/ng-template" id="userItemTemplate.html"><a typeahead-scroll-item="$parent.$index"><span
+        class="glyphicon glyphicon-user"></span><span class="user-label"
+                                                      bind-html-unsafe="match.label | typeaheadHighlight:query"></span></a>
+</script>
+
+
+<!--<script src="scripts/bcf07ef7.scripts.js"></script>-->
+<script src="additional_components/jquery/jquery-2.2.2.min.js"></script>
+<script src="additional_components/angularjs/angular.min.js"></script>
+<script src="additional_components/angularjs/angular-cookies.min.js"></script>
+<script src="additional_components/angularjs/angular-resource.min.js"></script>
+<script src="additional_components/angularjs/angular-route.min.js"></script>
+<script src="additional_components/angularjs/angular-sanitize.min.js"></script>
+<script src="additional_components/angular-translate/angular-translate.min.js"></script>
+<script src="additional_components/angular-translate/angular-translate-loader-static-files.min.js"></script>
+<script src="additional_components/ui-select/dist/select.min.js"></script>
+<script src="additional_components/ng-grid/ng-grid-2.0.14.min.js"></script>
+<script src="additional_components/ui-bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
+<script src="additional_components/angular-file-upload/angular-file-upload.min.js"></script>
+<script src="additional_components/toastr/angular-toastr.tpls.min.js"></script>
+<script src="additional_components/angular-filter/dist/angular-filter.min.js"></script>
+<script src="additional_components/moment/min/moment.min.js"></script>
+<script src="scripts/http-auth-interceptor.js"></script>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/config.js"></script>
+<script src="scripts/constants.js"></script>
+<script src="scripts/controllers.js"></script>
+<script src="scripts/controllers/dashboardController.js"></script>
+<script src="scripts/controllers/masters/courseController.js"></script>
+<script src="scripts/controllers/masters/departmentController.js"></script>
+<script src="scripts/controllers/clientController.js"></script>
+<script src="scripts/controllers/itemController.js"></script>
+<script src="scripts/controllers/repController.js"></script>
+<script src="scripts/controllers/unitController.js"></script>
+<script src="scripts/controllers/bankController.js"></script>
+<script src="scripts/controllers/pos/stockController.js"></script>
+<script src="scripts/controllers/pos/invoiceController.js"></script>
+<script src="scripts/controllers/pos/billingController.js"></script>
+<script src="scripts/controllers/pos/currentStockController.js"></script>
+<script src="scripts/controllers/pos/returnController.js"></script>
+<script src="scripts/controllers/pos/invoiceBriefController.js"></script>
+<script src="scripts/controllers/pos/stockManagementController.js"></script>
+
+<script src="scripts/users-controllers.js"></script>
+<script src="scripts/directives.js"></script>
+<script src="scripts/monitoring-controller.js"></script>
+<script src="scripts/services.js"></script>
+<script src="scripts/utils.js"></script>
+
+</body>
+</html>

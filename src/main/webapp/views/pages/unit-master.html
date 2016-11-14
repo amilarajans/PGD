@@ -1,0 +1,111 @@
+<div id="page-wrapper" class="col-lg-10 col-lg-offset-2">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    <i class="fa fa-fw fa-tasks"></i> Unit MASTER
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i> <a href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-tasks"></i> Unit MASTER
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-6">
+                <form role="form">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Add a New Unit</h2>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Unit<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter text" ng-model="unit.name">
+                    </div>
+
+                    <button type="submit" ng-show="!editMode" class="btn btn-success" ng-click="addUnit()">
+                        {{'GENERAL.ACTION.SAVE' | translate}}
+                    </button>
+                    <button type="submit" ng-show="editMode" class="btn btn-success" ng-click="updateUnit()">
+                        {{'GENERAL.ACTION.UPDATE' | translate}}
+                    </button>
+                    <button type="reset" class="btn btn-warning" ng-click="resetUnit()">
+                        {{'GENERAL.ACTION.RESET' | translate}}
+                    </button>
+                    <br>
+
+                </form>
+
+            </div>
+            <div class="col-lg-1"></div>
+
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <br> <br> <br>
+            <div class="col-lg-10">
+                <h2>All the Units use in System</h2>
+                <br>
+                <div class="col-lg-3">
+                    <div class="form-group input-group">
+                        Unit Name
+                        <input type="text" class="form-control" placeholder="Unit Name" ng-model="unitName">
+                        <div>&nbsp;</div>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="searchUnit()">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+
+                </div>
+                <br/><br/>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th> Unit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="unit in unitList">
+                            <td>{{$index+1}}</td>
+                            <td>{{unit.name}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="editUnit(unit)">
+                                    {{'GENERAL.ACTION.EDIT' | translate}}
+                                </button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                        ng-click="deleteUnit(unit.id)">{{'GENERAL.ACTION.DELETE' | translate}}
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <uib-pagination ng-change="pageChanged()" total-items="totalItems" items-per-page="itemsPerPage"
+                                    ng-model="currentPage" max-size="maxSize" class="pagination-sm"
+                                    boundary-link-numbers="true"></uib-pagination>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
