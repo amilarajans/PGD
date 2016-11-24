@@ -1,8 +1,6 @@
 package com.origins.pgd.domain.masters;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.origins.pgd.domain.User;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -11,42 +9,26 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
 @Entity
-@Table(name = "mst_course")
+@Table(name = "mst_course_payments")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Course implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class CourseWisePayments implements Serializable {
+    private static final long serialVersionUID =  1L;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    @Size(max = 75)
-    @Column(name = "c_code")
-    private String code;
-
-    @Size(max = 150)
-    @Column(name = "c_name")
-    private String name;
+    @Column(name = "cp_amount")
+    private Double amount;
 
     @Size(max = 45)
-    @Column(name = "c_description")
+    @Column(name = "cp_description")
     private String description;
-
-    @Size(max = 10)
-    @Column(name = "c_year")
-    private String year;
-
-    @Column(name = "c_from_date")
-    private Date fromDate;
-
-    @Column(name = "c_to_date")
-    private Date toDate;
 
     @Column(name = "is_active")
     private Boolean active;
@@ -70,8 +52,8 @@ public class Course implements Serializable {
     private Department department;
 
     @ManyToOne
-    @JoinColumn(name = "fk_supervisor")
-    private User supervisor;
+    @JoinColumn(name = "fk_course")
+    private Course course;
 
     public BigInteger getId() {
         return id;
@@ -81,68 +63,12 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public Date getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public Date getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(Date toDate) {
-        this.toDate = toDate;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public User getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(User supervisor) {
-        this.supervisor = supervisor;
     }
 
     public Boolean getActive() {
@@ -185,12 +111,27 @@ public class Course implements Serializable {
         this.modifiedDate = modifiedDate;
     }
 
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 }

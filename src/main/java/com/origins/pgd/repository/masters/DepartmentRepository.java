@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
@@ -17,5 +19,8 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 
     @Query(value = "SELECT department FROM Department department WHERE department.name LIKE :name")
     Page<Department> findByName(@Param("name") String name, Pageable pageable);
+
+    @Query(value = "SELECT department FROM Department department")
+    List<Department> findAllActive();
 
 }

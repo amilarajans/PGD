@@ -37,9 +37,15 @@ public class DepartmentResource {
         return departmentRepository.findByName(name, new PageRequest(page - 1, Integer.parseInt(env.getProperty("result.page.size")), new Sort(Sort.Direction.ASC, "id")));
     }
 
-    @RequestMapping(value = {"/allDepartment"}, method = {RequestMethod.GET}, produces = {"application/json"})
+    @RequestMapping(value = {"/allActiveDepartments"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed
     public List<Department> getAll() {
+        return departmentRepository.findAllActive();
+    }
+
+    @RequestMapping(value = {"/allDepartment"}, method = {RequestMethod.GET}, produces = {"application/json"})
+    @Timed
+    public List<Department> getAllActive() {
         return departmentRepository.findAll();
     }
 

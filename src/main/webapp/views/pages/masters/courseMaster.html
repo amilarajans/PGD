@@ -27,15 +27,27 @@
                                         <div class="row">
                                             <div class="col-lg-7">
                                                 <div class="form-group">
-                                                    <label for="#" class="col-sm-3 control-label">Department</label>
+                                                    <label for="department" class="col-sm-3 control-label">Department</label>
                                                     <div class="col-sm-4">
-                                                        <select ng-disabled="editMode"  class="form-control">
-
-                                                            <option>chemistry</option>
-                                                            <option>Zoology</option>
-                                                            <option>Statistics</option>
-                                                            <option>Plant Sciences</option>
-
+                                                        <select id="department" ng-disabled="editMode"
+                                                                ng-model="course.department"
+                                                                ng-options="obj as obj.name for obj in departmentList">
+                                                            <option value="">--Please Select--</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="supervisor" class="col-sm-3 control-label">Supervisor</label>
+                                                    <div class="col-sm-4">
+                                                        <select id="supervisor" ng-disabled="editMode"
+                                                                ng-model="course.supervisor"
+                                                                ng-options="obj as obj.login for obj in userList">
+                                                            <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -126,7 +138,7 @@
                         <tr ng-repeat="c in courseList">
                             <td style="text-align: left;width: 15%;">{{c.code}}</td>
                             <td style="text-align: left;width: 15%;">{{c.name}}</td>
-                            <td style="text-align: left;width: 10%;"></td>
+                            <td style="text-align: left;width: 10%;">{{c.department.name}}</td>
                             <td style="text-align: left;width: 50%;">{{c.description}}</td>
                             <td style="text-align: center;width: 5%;">
                                 <button type="submit" class="btn btn-primary btn-sm" ng-click="edit(c)">

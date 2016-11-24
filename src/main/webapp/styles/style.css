@@ -173,6 +173,7 @@ body {
 
 .navbar .dropdown-menu > li > a:hover, .navbar .dropdown-menu > li > a:focus {
     background-color: #384042;
+    color: #482c8c;
 }
 
 .navbar .dropdown-menu > .active > a, .navbar .dropdown-menu > .active > a:hover, .navbar .dropdown-menu > .active > a:focus {
@@ -182,6 +183,11 @@ body {
 
 .navbar .dropdown-menu > li > a {
     color: #ffffff;
+}
+.navbar .menu-item:hover {
+    color: #482c8c !important;
+    /*border-top: 6px solid red;*/
+    /*background-color: lightgrey !important;*/
 }
 
 .tabs-wrapper {

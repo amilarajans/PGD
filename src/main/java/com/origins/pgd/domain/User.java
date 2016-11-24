@@ -48,6 +48,13 @@ public class User implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Authority> authorities;
 
+    public User() {
+    }
+
+    public User(String login) {
+        this.login = login;
+    }
+
     public String getLogin() {
         return this.login;
     }

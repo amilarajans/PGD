@@ -1,13 +1,14 @@
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
-activitiAdminApp.controller('CourseController', ['$rootScope', '$scope', '$http', 'toastr',
+activitiAdminApp.controller('CourseWisePaymentController', ['$rootScope', '$scope', '$http', 'toastr',
     function ($rootScope, $scope, $http, toastr) {
 
-        $rootScope.navigation = {selection: 'course'};
+        $rootScope.navigation = {selection: 'coursePayment'};
 
+        $scope.coursePaymentList = [];
         $scope.courseList = [];
-        $scope.course = {};
+        $scope.coursePayment = {};
         $scope.maxSize = 10;
         $scope.itemsPerPage = 0;
         $scope.totalItems = 0;
@@ -21,35 +22,35 @@ activitiAdminApp.controller('CourseController', ['$rootScope', '$scope', '$http'
             $scope.departmentList = [];
         });
 
-        $http.get('app/rest/users').success(function (rs) {
-            $scope.userList = rs;
+        $http.get('app/api/v1/course/allCourse').success(function (rs) {
+            $scope.courseList = rs;
         }).error(function (e) {
-            $scope.userList = [];
+            $scope.courseList = [];
         });
 
         $scope.pageChanged = function () {
-            if (!$scope.courseName) {
+            if (!$scope.coursePaymentName) {
                 name = '*';
             } else {
-                name = $scope.courseName;
+                name = $scope.coursePaymentName;
             }
-            $http.get('app/api/v1/course/all', {
+            $http.get('app/api/v1/coursePayment/all', {
                 params: {
                     page: $scope.currentPage,
                     name: name
                 }
             }).success(function (rs) {
-                $scope.courseList = rs.content;
+                $scope.coursePaymentList = rs.content;
                 $scope.totalItems = rs.totalElements;
                 $scope.itemsPerPage = rs.size;
             }).error(function (e) {
-                $scope.courseList = [];
+                $scope.coursePaymentList = [];
                 console.log(e);
             });
         };
 
         $scope.add = function () {
-            $http.post('app/api/v1/course/save', $scope.course).success(function (data) {
+            $http.post('app/api/v1/coursePayment/save', $scope.coursePayment).success(function (data) {
                 toastr.success('Successfully Saved !!');
                 $scope.pageChanged();
                 $scope.reset();
@@ -59,7 +60,7 @@ activitiAdminApp.controller('CourseController', ['$rootScope', '$scope', '$http'
         };
 
         $scope.update = function () {
-            $http.post('app/api/v1/course/update', $scope.course).success(function (data) {
+            $http.post('app/api/v1/coursePayment/update', $scope.coursePayment).success(function (data) {
                 toastr.success('Successfully Updated !!');
                 $scope.pageChanged();
                 $scope.reset();
@@ -68,13 +69,13 @@ activitiAdminApp.controller('CourseController', ['$rootScope', '$scope', '$http'
             });
         };
 
-        $scope.edit = function (course) {
-            $scope.course = course;
+        $scope.edit = function (coursePayment) {
+            $scope.coursePayment = coursePayment;
             $scope.editMode = true;
         };
 
         $scope.delete = function (id) {
-            $http.delete('app/api/v1/course/delete/' + id).success(function (data) {
+            $http.delete('app/api/v1/coursePayment/delete/' + id).success(function (data) {
                 toastr.success('Successfully Deleted !!');
                 $scope.pageChanged();
             }).error(function (data) {
@@ -83,7 +84,7 @@ activitiAdminApp.controller('CourseController', ['$rootScope', '$scope', '$http'
         };
 
         $scope.reset = function () {
-            $scope.course = {};
+            $scope.coursePayment = {};
             $scope.editMode = false;
         };
 

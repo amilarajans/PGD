@@ -44,17 +44,17 @@
             </a>
         </div>
         <ul class="nav navbar-nav">
-            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#">Home</a></li>
-            <li ng-class="{active: navigation.selection == 'course'}"><a href="#courseMaster">Courses</a></li>
-            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#courseWisePaymentMaster">Courses Payments</a></li>
-            <li ng-class="{active: navigation.selection == 'department'}"><a href="#departmentMaster">Departments</a></li>
-            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#examsMaster">Exams</a></li>
-            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#studentMaster">Student</a></li>
-            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#examResults">Exam Results</a></li>
-            <li ng-class="{active: navigation.selection == 'dashboard'}"><a href="#studentPayments">Student Payments</a></li>
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a class="menu-item" href="#dashboard">Home</a></li>
+            <li ng-class="{active: navigation.selection == 'course'}"><a class="menu-item" href="#courseMaster">Courses</a></li>
+            <li ng-class="{active: navigation.selection == 'coursePayment'}"><a class="menu-item" href="#courseWisePaymentMaster">Courses Payments</a></li>
+            <li ng-class="{active: navigation.selection == 'department'}"><a class="menu-item" href="#departmentMaster">Departments</a></li>
+            <li ng-class="{active: navigation.selection == 'exam'}"><a class="menu-item" href="#examsMaster">Exams</a></li>
+            <li ng-class="{active: navigation.selection == 'student'}"><a class="menu-item" href="#studentMaster">Student</a></li>
+            <li ng-class="{active: navigation.selection == 'examResult'}"><a class="menu-item" href="#examResults">Exam Results</a></li>
+            <li ng-class="{active: navigation.selection == 'studentPayments'}"><a class="menu-item" href="#studentPayments">Student Payments</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a class="menu-item" href="#logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -102,9 +102,9 @@
 <script src="scripts/controllers/dashboardController.js"></script>
 <script src="scripts/controllers/masters/courseController.js"></script>
 <script src="scripts/controllers/masters/departmentController.js"></script>
-<script src="scripts/controllers/clientController.js"></script>
-<script src="scripts/controllers/itemController.js"></script>
-<script src="scripts/controllers/repController.js"></script>
+<script src="scripts/controllers/masters/examController.js"></script>
+<script src="scripts/controllers/masters/courseWisePaymentController.js"></script>
+<script src="scripts/controllers/masters/studentController.js"></script>
 <script src="scripts/controllers/unitController.js"></script>
 <script src="scripts/controllers/bankController.js"></script>
 <script src="scripts/controllers/pos/stockController.js"></script>

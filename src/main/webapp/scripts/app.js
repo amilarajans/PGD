@@ -58,7 +58,7 @@ activitiAdminApp
                 })
                 .when('/courseWisePaymentMaster', {
                     templateUrl: 'views/pages/masters/courseWisePaymentMaster.html',
-                    controller: 'SupplierController',
+                    controller: 'CourseWisePaymentController',
                     resolve: authRouteResolver,
                     reloadOnSearch: true
                 })
@@ -70,13 +70,13 @@ activitiAdminApp
                 })
                 .when('/examsMaster', {
                     templateUrl: 'views/pages/masters/examsMaster.html',
-                    controller: 'SupplierController',
+                    controller: 'ExamController',
                     resolve: authRouteResolver,
                     reloadOnSearch: true
                 })
                 .when('/studentMaster', {
                     templateUrl: 'views/pages/masters/studentMaster.html',
-                    controller: 'SupplierController',
+                    controller: 'StudentController',
                     resolve: authRouteResolver,
                     reloadOnSearch: true
                 })
