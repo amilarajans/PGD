@@ -1,7 +1,10 @@
-package com.origins.pgd.domain.masters;
+package com.origins.pgd.domain.transactions;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.origins.pgd.domain.User;
+import com.origins.pgd.domain.masters.Course;
+import com.origins.pgd.domain.masters.Department;
+import com.origins.pgd.domain.masters.Exam;
+import com.origins.pgd.domain.masters.PaymentMode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -15,9 +18,9 @@ import java.util.Date;
  * Created by Manoj Janaka on 14-11-2016.
  */
 @Entity
-@Table(name = "mst_exam")
+@Table(name = "trn_exam_result")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Exam implements Serializable {
+public class ExamResults implements Serializable {
     private static final long serialVersionUID =  1L;
     @Id
     @Column(name = "id")
@@ -25,12 +28,8 @@ public class Exam implements Serializable {
     private BigInteger id;
 
     @Size(max = 75)
-    @Column(name = "e_code")
-    private String code;
-
-    @Size(max = 150)
-    @Column(name = "e_name")
-    private String name;
+    @Column(name = "e_result")
+    private String result;
 
     @Size(max = 255)
     @Column(name = "e_description")
@@ -61,6 +60,18 @@ public class Exam implements Serializable {
     @JoinColumn(name = "fk_course")
     private Course course;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_student")
+    private User student;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_pay_mode")
+    private PaymentMode paymentMode;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_exam")
+    private Exam exam;
+
     public BigInteger getId() {
         return id;
     }
@@ -69,20 +80,12 @@ public class Exam implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getResult() {
+        return result;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public String getDescription() {
@@ -149,12 +152,36 @@ public class Exam implements Serializable {
         this.course = course;
     }
 
+    public User getStudent() {
+        return student;
+    }
+
+    public void setStudent(User student) {
+        this.student = student;
+    }
+
+    public PaymentMode getPaymentMode() {
+        return paymentMode;
+    }
+
+    public void setPaymentMode(PaymentMode paymentMode) {
+        this.paymentMode = paymentMode;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
     @Override
     public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
+        return "ExamResults{" +
+                "result='" + result + '\'' +
+                ", student=" + student +
+                ", exam=" + exam +
                 '}';
     }
 }

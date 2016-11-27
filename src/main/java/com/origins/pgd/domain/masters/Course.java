@@ -26,6 +26,10 @@ public class Course implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
+    @Size(max = 15)
+    @Column(name = "batch")
+    private String batch;
+
     @Size(max = 75)
     @Column(name = "c_code")
     private String code;
@@ -34,7 +38,7 @@ public class Course implements Serializable {
     @Column(name = "c_name")
     private String name;
 
-    @Size(max = 45)
+    @Size(max = 255)
     @Column(name = "c_description")
     private String description;
 
@@ -183,6 +187,14 @@ public class Course implements Serializable {
 
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public String getBatch() {
+        return batch;
+    }
+
+    public void setBatch(String batch) {
+        this.batch = batch;
     }
 
     @Override

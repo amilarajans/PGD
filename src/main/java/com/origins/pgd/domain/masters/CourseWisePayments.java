@@ -26,7 +26,7 @@ public class CourseWisePayments implements Serializable {
     @Column(name = "cp_amount")
     private Double amount;
 
-    @Size(max = 45)
+    @Size(max = 255)
     @Column(name = "cp_description")
     private String description;
 

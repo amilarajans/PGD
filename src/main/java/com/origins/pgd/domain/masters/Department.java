@@ -31,7 +31,7 @@ public class Department implements Serializable {
     @Column(name = "d_name")
     private String name;
 
-    @Size(max = 45)
+    @Size(max = 255)
     @Column(name = "d_description")
     private String description;
 

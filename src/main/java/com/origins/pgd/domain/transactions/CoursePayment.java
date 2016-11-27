@@ -1,7 +1,9 @@
-package com.origins.pgd.domain.masters;
+package com.origins.pgd.domain.transactions;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.origins.pgd.domain.User;
+import com.origins.pgd.domain.masters.Course;
+import com.origins.pgd.domain.masters.Department;
+import com.origins.pgd.domain.masters.PaymentMode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -15,26 +17,25 @@ import java.util.Date;
  * Created by Manoj Janaka on 14-11-2016.
  */
 @Entity
-@Table(name = "mst_exam")
+@Table(name = "trn_course_payments")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Exam implements Serializable {
+public class CoursePayment implements Serializable {
     private static final long serialVersionUID =  1L;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    @Size(max = 75)
-    @Column(name = "e_code")
-    private String code;
-
-    @Size(max = 150)
-    @Column(name = "e_name")
-    private String name;
+    @Size(max = 255)
+    @Column(name = "refference")
+    private String refference;
 
     @Size(max = 255)
-    @Column(name = "e_description")
-    private String description;
+    @Column(name = "remarks")
+    private String remarks;
+
+    @Column(name = "paymentDate")
+    private Date paymentDate;
 
     @Column(name = "is_active")
     private Boolean active;
@@ -61,6 +62,14 @@ public class Exam implements Serializable {
     @JoinColumn(name = "fk_course")
     private Course course;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_student")
+    private User student;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_pay_mode")
+    private PaymentMode paymentMode;
+
     public BigInteger getId() {
         return id;
     }
@@ -69,28 +78,28 @@ public class Exam implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getRefference() {
+        return refference;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setRefference(String refference) {
+        this.refference = refference;
     }
 
-    public String getName() {
-        return name;
+    public String getRemarks() {
+        return remarks;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public String getDescription() {
-        return description;
+    public Date getPaymentDate() {
+        return paymentDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
     public Boolean getActive() {
@@ -149,12 +158,27 @@ public class Exam implements Serializable {
         this.course = course;
     }
 
+    public User getStudent() {
+        return student;
+    }
+
+    public void setStudent(User student) {
+        this.student = student;
+    }
+
+    public PaymentMode getPaymentMode() {
+        return paymentMode;
+    }
+
+    public void setPaymentMode(PaymentMode paymentMode) {
+        this.paymentMode = paymentMode;
+    }
+
     @Override
     public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
+        return "CoursePayments{" +
+                "refference='" + refference + '\'' +
+                ", student=" + student +
                 '}';
     }
 }

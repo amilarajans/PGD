@@ -8,12 +8,24 @@ activitiAdminApp.controller('CourseController', ['$rootScope', '$scope', '$http'
 
         $scope.courseList = [];
         $scope.course = {};
+        $scope.yearList = [];
         $scope.maxSize = 10;
         $scope.itemsPerPage = 0;
         $scope.totalItems = 0;
         $scope.currentPage = 1;
 
         $scope.editMode = false;
+
+        var date = new Date;
+        var year = date.getFullYear() - 2;
+
+        for (var i = year; i < year + 6; i++) {
+            $scope.yearList.push(i);
+        }
+
+        $scope.open1 = function() {
+            $scope.popup1.opened = true;
+        };
 
         $http.get('app/api/v1/department/allActiveDepartments').success(function (rs) {
             $scope.departmentList = rs;

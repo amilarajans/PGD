@@ -111,6 +111,14 @@ public class Student implements Serializable {
     @Column(name = "modified_date")
     private Date modifiedDate;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_department")
+    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_course")
+    private Course course;
+
     public BigInteger getId() {
         return id;
     }
@@ -301,6 +309,22 @@ public class Student implements Serializable {
 
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.origins.pgd.domain.masters;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.origins.pgd.domain.User;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -15,9 +14,9 @@ import java.util.Date;
  * Created by Manoj Janaka on 14-11-2016.
  */
 @Entity
-@Table(name = "mst_exam")
+@Table(name = "mst_payment_mode")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Exam implements Serializable {
+public class PaymentMode implements Serializable {
     private static final long serialVersionUID =  1L;
     @Id
     @Column(name = "id")
@@ -25,16 +24,15 @@ public class Exam implements Serializable {
     private BigInteger id;
 
     @Size(max = 75)
-    @Column(name = "e_code")
-    private String code;
-
-    @Size(max = 150)
-    @Column(name = "e_name")
-    private String name;
+    @Column(name = "p_type")
+    private String type;
 
     @Size(max = 255)
-    @Column(name = "e_description")
+    @Column(name = "p_description")
     private String description;
+
+    @Column(name = "is_refundable")
+    private Boolean refundable;
 
     @Column(name = "is_active")
     private Boolean active;
@@ -53,14 +51,6 @@ public class Exam implements Serializable {
     @Column(name = "modified_date")
     private Date modifiedDate;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_department")
-    private Department department;
-
-    @ManyToOne
-    @JoinColumn(name = "fk_course")
-    private Course course;
-
     public BigInteger getId() {
         return id;
     }
@@ -69,20 +59,12 @@ public class Exam implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getType() {
+        return type;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
@@ -91,6 +73,14 @@ public class Exam implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getRefundable() {
+        return refundable;
+    }
+
+    public void setRefundable(Boolean refundable) {
+        this.refundable = refundable;
     }
 
     public Boolean getActive() {
@@ -133,28 +123,11 @@ public class Exam implements Serializable {
         this.modifiedDate = modifiedDate;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     @Override
     public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
+        return "PaymentMode{" +
+                "type='" + type + '\'' +
+                ", refundable=" + refundable +
                 '}';
     }
 }
