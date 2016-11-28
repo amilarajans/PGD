@@ -20,7 +20,7 @@ import java.util.Date;
 @Entity
 @Table(name = "trn_exam_result")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class ExamResults implements Serializable {
+public class ExamResult implements Serializable {
     private static final long serialVersionUID =  1L;
     @Id
     @Column(name = "id")

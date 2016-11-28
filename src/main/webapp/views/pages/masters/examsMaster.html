@@ -31,7 +31,7 @@
                                                     <label for="department"
                                                            class="col-sm-3 control-label">Department</label>
                                                     <div class="col-sm-4">
-                                                        <select id="department" ng-disabled="editMode"
+                                                        <select  chosen options="departmentList" id="department" ng-disabled="editMode"
                                                                 class="form-control1"
                                                                 ng-model="exam.department"
                                                                 ng-options="obj as obj.name for obj in departmentList">
@@ -47,7 +47,7 @@
                                                 <div class="form-group">
                                                     <label for="course" class="col-sm-3 control-label">Course</label>
                                                     <div class="col-sm-4">
-                                                        <select id="course" ng-disabled="editMode" class="form-control1"
+                                                        <select  chosen options="courseList" id="course" ng-disabled="editMode" class="form-control1"
                                                                 ng-model="exam.course"
                                                                 ng-options="obj as obj.name for obj in courseList">
                                                             <option value="">--Please Select--</option>

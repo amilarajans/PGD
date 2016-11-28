@@ -72,6 +72,18 @@ activitiAdminApp.controller('StudentController', ['$rootScope', '$scope', '$http
             });
         };
 
+        $http.get('app/api/v1/department/allActiveDepartments').success(function (rs) {
+            $scope.departmentList = rs;
+        }).error(function (e) {
+            $scope.departmentList = [];
+        });
+
+        $http.get('app/api/v1/course/allCourse').success(function (rs) {
+            $scope.courseList = rs;
+        }).error(function (e) {
+            $scope.courseList = [];
+        });
+
         $scope.reset = function () {
             $scope.student = {};
             $scope.editMode = false;

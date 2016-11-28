@@ -50,6 +50,18 @@ activitiAdminApp
                     resolve: authRouteResolver,
                     reloadOnSearch: true
                 })
+                .when('/paymentType', {
+                    templateUrl: 'views/pages/masters/paymentTypeMaster.html',
+                    controller: 'PaymentTypeController',
+                    resolve: authRouteResolver,
+                    reloadOnSearch: true
+                })
+                .when('/paymentMode', {
+                    templateUrl: 'views/pages/masters/paymentModeMaster.html',
+                    controller: 'PaymentModeController',
+                    resolve: authRouteResolver,
+                    reloadOnSearch: true
+                })
                 .when('/courseMaster', {
                     templateUrl: 'views/pages/masters/courseMaster.html',
                     controller: 'CourseController',

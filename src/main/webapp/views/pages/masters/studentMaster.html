@@ -28,6 +28,36 @@
                                         <div class="row">
                                             <div class="col-lg-7">
                                                 <div class="form-group">
+                                                    <label for="department"
+                                                           class="col-sm-3 control-label">Department</label>
+                                                    <div class="col-sm-4">
+                                                        <select  chosen options="departmentList" id="department" ng-disabled="editMode"
+                                                                 class="form-control1"
+                                                                 ng-model="student.department"
+                                                                 ng-options="obj as obj.name for obj in departmentList">
+                                                            <option value="">--Please Select--</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="course" class="col-sm-3 control-label">Course</label>
+                                                    <div class="col-sm-4">
+                                                        <select  chosen options="courseList" id="course" ng-disabled="editMode" class="form-control1"
+                                                                 ng-model="student.course"
+                                                                 ng-options="obj as obj.name for obj in courseList">
+                                                            <option value="">--Please Select--</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
                                                     <label for="code" class="col-sm-3 control-label">Student
                                                         Code</label>
                                                     <div class="col-sm-4">

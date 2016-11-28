@@ -1,0 +1,144 @@
+<div id="page-wrapper" class="col-lg-10" style="background-color: #6a6a6a">
+
+    <div style="border-radius: 8px;border: 2px solid #aea2cc;padding: 2px;margin: 2px;margin-top: 15px;background-color: #ffffff">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <br/>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i> Master Data
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-bank"></i> Payment Type Details
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="horizontal-form">
+                                    <form role="form">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="code" class="col-sm-3 control-label">Payment
+                                                        Code</label>
+                                                    <div class="col-sm-4">
+                                                        <input ng-disabled="editMode" id="code" type="text" class="form-control"
+                                                               ng-model="payment.code"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="name" class="col-sm-3 control-label">Payment
+                                                        Name</label>
+                                                    <div class="col-sm-8">
+                                                        <input id="name" type="text" class="form-control"
+                                                               ng-model="payment.name"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="description"
+                                                           class="col-sm-3 control-label">Description</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea cols="60" rows="6" id="description" type="text"
+                                                                  ng-model="payment.description"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
+                                                    <label for="#" class="col-sm-3 control-label"></label>
+                                                    <div class="col-sm-4">
+                                                        <button type="submit" ng-show="!editMode"
+                                                                class="btn btn-success" ng-click="add()">
+                                                            {{'GENERAL.ACTION.SAVE' | translate}}
+                                                        </button>
+                                                        <button type="submit" ng-show="editMode" class="btn btn-success"
+                                                                ng-click="update()">
+                                                            {{'GENERAL.ACTION.UPDATE' | translate}}
+                                                        </button>
+                                                        <button type="reset" class="btn btn-warning"
+                                                                ng-click="reset()">
+                                                            {{'GENERAL.ACTION.RESET' | translate}}
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="generalTable">
+                        <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="d in paymentList">
+                            <td style="text-align: left;width: 15%;">{{d.code}}</td>
+                            <td style="text-align: left;width: 15%;">{{d.name}}</td>
+                            <td style="text-align: left;width: 60%;">{{d.description}}</td>
+                            <td style="text-align: center;width: 5%;">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="edit(d)">
+                                    {{'GENERAL.ACTION.EDIT' | translate}}
+                                </button>
+                            </td>
+                            <td style="text-align: center;width: 5%;">
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                        ng-click="delete(d.id)">{{'GENERAL.ACTION.DELETE' | translate}}
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <uib-pagination ng-change="pageChanged()" total-items="totalItems" items-per-page="itemsPerPage"
+                                    ng-model="currentPage" max-size="maxSize" class="pagination-sm"
+                                    boundary-link-numbers="true"></uib-pagination>
+                </div>
+            </div>
+
+            <br/>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+</div>
+<!-- /#page-wrapper -->
