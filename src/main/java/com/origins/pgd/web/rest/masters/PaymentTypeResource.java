@@ -32,9 +32,8 @@ public class PaymentTypeResource {
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed
-    public Page<PaymentType> getAllByPage(@RequestParam("name") String name, @RequestParam("page") Integer page) {
-        name = name == null ? "%" : name.replace("*", "%");
-        return paymentTypeRepository.findByName(name, new PageRequest(page - 1, Integer.parseInt(env.getProperty("result.page.size")), new Sort(Sort.Direction.ASC, "id")));
+    public Page<PaymentType> getAllByPage(@RequestParam("page") Integer page) {
+        return paymentTypeRepository.findByName(new PageRequest(page - 1, Integer.parseInt(env.getProperty("result.page.size")), new Sort(Sort.Direction.ASC, "id")));
     }
 
     @RequestMapping(value = {"/allActivePaymentTypes"}, method = {RequestMethod.GET}, produces = {"application/json"})
@@ -53,6 +52,7 @@ public class PaymentTypeResource {
     @Timed
     public void save(@RequestBody PaymentType department) {
         if (paymentTypeRepository.findOneByCode(department.getType()) == null) {
+            department.setActive(true);
             department.setCreatedBy(SecurityUtils.getCurrentLogin());
             department.setCreatedDate(new Date());
             paymentTypeRepository.save(department);

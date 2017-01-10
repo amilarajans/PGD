@@ -55,6 +55,10 @@ public class CourseWisePayments implements Serializable {
     @JoinColumn(name = "fk_course")
     private Course course;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_payment_type")
+    private PaymentType paymentType;
+
     public BigInteger getId() {
         return id;
     }
@@ -133,5 +137,13 @@ public class CourseWisePayments implements Serializable {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public PaymentType getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(PaymentType paymentType) {
+        this.paymentType = paymentType;
     }
 }

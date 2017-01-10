@@ -32,25 +32,12 @@
                                                         Code</label>
                                                     <div class="col-sm-4">
                                                         <input ng-disabled="editMode" id="code" type="text" class="form-control"
-                                                               ng-model="payment.code"/>
+                                                               ng-model="payment.type"/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <div class="form-group">
-                                                    <label for="name" class="col-sm-3 control-label">Payment
-                                                        Name</label>
-                                                    <div class="col-sm-8">
-                                                        <input id="name" type="text" class="form-control"
-                                                               ng-model="payment.name"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
+                                        <br/>
                                         <div class="row">
                                             <div class="col-lg-7">
                                                 <div class="form-group">
@@ -105,8 +92,7 @@
                     <table class="generalTable">
                         <thead>
                         <tr>
-                            <th>Code</th>
-                            <th>Name</th>
+                            <th>Type</th>
                             <th>Description</th>
                             <th></th>
                             <th></th>
@@ -114,8 +100,7 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="d in paymentList">
-                            <td style="text-align: left;width: 15%;">{{d.code}}</td>
-                            <td style="text-align: left;width: 15%;">{{d.name}}</td>
+                            <td style="text-align: left;width: 15%;">{{d.type}}</td>
                             <td style="text-align: left;width: 60%;">{{d.description}}</td>
                             <td style="text-align: center;width: 5%;">
                                 <button type="submit" class="btn btn-primary btn-sm" ng-click="edit(d)">

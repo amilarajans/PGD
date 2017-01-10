@@ -59,6 +59,21 @@
                                         <div class="row">
                                             <div class="col-lg-7">
                                                 <div class="form-group">
+                                                    <label for="paymentType" class="col-sm-3 control-label">Payment Type</label>
+                                                    <div class="col-sm-4">
+                                                        <select chosen options="paymentTypeList" id="paymentType" ng-disabled="editMode" class="form-control1"
+                                                                ng-model="coursePayment.paymentType"
+                                                                ng-options="obj as obj.type for obj in paymentTypeList">
+                                                            <option value="">--Please Select--</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <div class="form-group">
                                                     <label for="amount" class="col-sm-3 control-label">Amount</label>
                                                     <div class="col-sm-8">
                                                         <input id="amount" type="text" class="form-control" ng-model="coursePayment.amount">
@@ -123,6 +138,7 @@
                         <tr>
                             <th>Department</th>
                             <th>Course</th>
+                            <th>Payment</th>
                             <th>Amount</th>
                             <th>Description</th>
                             <th></th>
@@ -133,6 +149,7 @@
                         <tr ng-repeat="cp in coursePaymentList">
                             <td style="text-align: left;width: 15%;">{{cp.department.name}}</td>
                             <td style="text-align: left;width: 15%;">{{cp.course.name}}</td>
+                            <td style="text-align: left;width: 15%;">{{cp.paymentType.type}}</td>
                             <td style="text-align: right;width: 10%;">{{cp.amount | number:2}}</td>
                             <td style="text-align: left;width: 50%;">{{cp.description}}</td>
                             <td style="text-align: center;width: 5%;">

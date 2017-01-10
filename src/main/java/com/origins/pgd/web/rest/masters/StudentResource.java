@@ -40,7 +40,7 @@ public class StudentResource {
     @RequestMapping(value = {"/allStudent"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed
     public List<Student> getAll() {
-        return StudentRepository.findAll();
+        return StudentRepository.findAllActive();
     }
 
     @RequestMapping(value = {"/save"}, method = {RequestMethod.POST}, produces = {"application/json"})

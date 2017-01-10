@@ -100,7 +100,7 @@ activitiAdminApp
                 })
                 .when('/studentPayments', {
                     templateUrl: 'views/pages/transactions/studentPayments.html',
-                    controller: 'SupplierController',
+                    controller: 'StudentPaymentController',
                     resolve: authRouteResolver,
                     reloadOnSearch: true
                 })

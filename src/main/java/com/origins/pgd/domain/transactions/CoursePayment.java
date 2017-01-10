@@ -55,12 +55,8 @@ public class CoursePayment implements Serializable {
     private Date modifiedDate;
 
     @ManyToOne
-    @JoinColumn(name = "fk_department")
-    private Department department;
-
-    @ManyToOne
-    @JoinColumn(name = "fk_course")
-    private Course course;
+    @JoinColumn(name = "fk_payment")
+    private CoursePayment coursePayment;
 
     @ManyToOne
     @JoinColumn(name = "fk_student")
@@ -142,20 +138,12 @@ public class CoursePayment implements Serializable {
         this.modifiedDate = modifiedDate;
     }
 
-    public Department getDepartment() {
-        return department;
+    public CoursePayment getCoursePayment() {
+        return coursePayment;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCoursePayment(CoursePayment coursePayment) {
+        this.coursePayment = coursePayment;
     }
 
     public User getStudent() {

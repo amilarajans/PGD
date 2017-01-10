@@ -1,13 +1,13 @@
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
-activitiAdminApp.controller('PaymentTypeController', ['$rootScope', '$scope', '$http', 'toastr',
+activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope', '$http', 'toastr',
     function ($rootScope, $scope, $http, toastr) {
 
-        $rootScope.navigation = {selection: 'paymentType'};
+        $rootScope.navigation = {selection: 'studentPayments'};
 
-        $scope.paymentList = [];
-        $scope.payment = {};
+        $scope.departmentList = [];
+        $scope.department = {};
         $scope.maxSize = 10;
         $scope.itemsPerPage = 0;
         $scope.totalItems = 0;
@@ -15,23 +15,35 @@ activitiAdminApp.controller('PaymentTypeController', ['$rootScope', '$scope', '$
 
         $scope.editMode = false;
 
+        $http.get('app/api/v1/student/allStudent').success(function (rs) {
+            $scope.studentList = rs;
+        }).error(function (e) {
+            $scope.studentList = [];
+        });
+
         $scope.pageChanged = function () {
-            $http.get('app/api/v1/payment_type/all', {
+            if (!$scope.departmentName) {
+                name = '*';
+            } else {
+                name = $scope.departmentName;
+            }
+            $http.get('app/api/v1/department/all', {
                 params: {
-                    page: $scope.currentPage
+                    page: $scope.currentPage,
+                    name: name
                 }
             }).success(function (rs) {
-                $scope.paymentList = rs.content;
+                $scope.departmentList = rs.content;
                 $scope.totalItems = rs.totalElements;
                 $scope.itemsPerPage = rs.size;
             }).error(function (e) {
-                $scope.paymentList = [];
+                $scope.departmentList = [];
                 console.log(e);
             });
         };
 
         $scope.add = function () {
-            $http.post('app/api/v1/payment_type/save', $scope.payment).success(function (data) {
+            $http.post('app/api/v1/department/save', $scope.department).success(function (data) {
                 toastr.success('Successfully Saved !!');
                 $scope.pageChanged();
                 $scope.reset();
@@ -41,7 +53,7 @@ activitiAdminApp.controller('PaymentTypeController', ['$rootScope', '$scope', '$
         };
 
         $scope.update = function () {
-            $http.post('app/api/v1/payment_type/update', $scope.payment).success(function (data) {
+            $http.post('app/api/v1/department/update', $scope.department).success(function (data) {
                 toastr.success('Successfully Updated !!');
                 $scope.pageChanged();
                 $scope.reset();
@@ -50,13 +62,13 @@ activitiAdminApp.controller('PaymentTypeController', ['$rootScope', '$scope', '$
             });
         };
 
-        $scope.edit = function (payment) {
-            $scope.payment = payment;
+        $scope.edit = function (department) {
+            $scope.department = department;
             $scope.editMode = true;
         };
 
         $scope.delete = function (id) {
-            $http.delete('app/api/v1/payment_type/delete/' + id).success(function (data) {
+            $http.delete('app/api/v1/department/delete/' + id).success(function (data) {
                 toastr.success('Successfully Deleted !!');
                 $scope.pageChanged();
             }).error(function (data) {
@@ -65,7 +77,7 @@ activitiAdminApp.controller('PaymentTypeController', ['$rootScope', '$scope', '$
         };
 
         $scope.reset = function () {
-            $scope.payment = {};
+            $scope.department = {};
             $scope.editMode = false;
         };
 

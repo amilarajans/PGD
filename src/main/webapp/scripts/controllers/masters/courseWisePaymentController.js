@@ -28,6 +28,13 @@ activitiAdminApp.controller('CourseWisePaymentController', ['$rootScope', '$scop
             $scope.courseList = [];
         });
 
+
+        $http.get('app/api/v1/payment_type/allActivePaymentTypes').success(function (rs) {
+            $scope.paymentTypeList = rs;
+        }).error(function (e) {
+            $scope.paymentTypeList = [];
+        });
+
         $scope.pageChanged = function () {
             if (!$scope.coursePaymentName) {
                 name = '*';

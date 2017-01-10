@@ -8,10 +8,10 @@
                     <br/>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i> Master Data
+                            <i class="fa fa-money"></i> Transactions
                         </li>
                         <li class="active">
-                            <i class="fa fa-bank"></i> Course Details
+                            <i class="fa fa-paypal"></i> Course Payments
                         </li>
                     </ol>
                 </div>
@@ -28,72 +28,17 @@
                                         <div class="row">
                                             <div class="col-lg-7">
                                                 <div class="form-group">
-                                                    <label for="#" class="col-sm-3 control-label">Department</label>
+                                                    <label for="studentList" class="col-sm-3 control-label">Department</label>
                                                     <div class="col-sm-4">
-                                                        <select class="form-control">
-
-                                                            <option>chemistry</option>
-                                                            <option>Zoology</option>
-                                                            <option>Statistics</option>
-                                                            <option>Plant Sciences</option>
-
+                                                        <select chosen options="studentList" id="studentList" ng-disabled="editMode" class="form-control1"
+                                                                ng-model="coursePayment.course"
+                                                                ng-options="obj as obj.code + ' - ' + obj.fullName+ ' - [' + obj.nic +']' for obj in studentList">
+                                                            <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <div class="form-group">
-                                                    <label for="code" class="col-sm-3 control-label">Course Code</label>
-                                                    <div class="col-sm-4">
-                                                        <input id="code" type="code" class="form-control"
-                                                               placeholder="Enter text">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <div class="form-group">
-                                                    <label for="email" class="col-sm-3 control-label">Course Name</label>
-                                                    <div class="col-sm-8">
-                                                        <input id="email" type="email" class="form-control"
-                                                               placeholder="Enter text">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <div class="form-group">
-                                                    <label for="email" class="col-sm-3 control-label">Description</label>
-                                                    <div class="col-sm-8">
-                                <textarea cols="60" rows="6" id="cityDescription" name="cityDescription" type="text"
-                                          ng-model="newCity.cityDesc"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <div class="form-group">
-                                                    <label for="#" class="col-sm-3 control-label"></label>
-                                                    <div class="col-sm-4">
-                                                        <button type="submit" class="btn btn-success">Submit</button>
-                                                        <button type="reset" class="btn btn-warning">Reset</button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-
                                     </form>
 
                                 </div>
