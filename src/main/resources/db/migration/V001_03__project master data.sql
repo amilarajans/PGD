@@ -17,6 +17,6 @@ CREATE TABLE `trn_course_payments` (
   CONSTRAINT `fk_cpay_pay_mode` FOREIGN KEY (`fk_pay_mode`) REFERENCES `mst_payment_mode` (`id`),
   CONSTRAINT `fk_cpay_student` FOREIGN KEY (`fk_student`) REFERENCES `mst_student` (`id`),
   CONSTRAINT `fk_cpay_payment` FOREIGN KEY (`fk_payment`) REFERENCES `mst_course_payments` (`id`),
-  CONSTRAINT `fk_cpay_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_cpay_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_cpay_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_cpay_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );

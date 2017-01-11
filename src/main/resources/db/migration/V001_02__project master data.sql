@@ -9,8 +9,8 @@ CREATE TABLE `mst_department` (
   `modified_by`   VARCHAR(50)  NULL,
   `modified_date` DATETIME     NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_depart_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_depart_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_depart_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_depart_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 CREATE TABLE `mst_course` (
@@ -31,9 +31,9 @@ CREATE TABLE `mst_course` (
   `modified_date` DATETIME     NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_course_department` FOREIGN KEY (`fk_department`) REFERENCES `mst_department` (`id`),
-  CONSTRAINT `fk_cp_fk_supervisor` FOREIGN KEY (`fk_supervisor`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_course_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_course_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_cp_fk_supervisor` FOREIGN KEY (`fk_supervisor`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_course_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_course_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 CREATE TABLE `mst_payment_types` (
@@ -47,8 +47,8 @@ CREATE TABLE `mst_payment_types` (
   `modified_by`   VARCHAR(50)  NULL,
   `modified_date` DATETIME     NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_pt_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_pt_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_pt_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_pt_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 CREATE TABLE `mst_course_payments` (
@@ -67,8 +67,8 @@ CREATE TABLE `mst_course_payments` (
   CONSTRAINT `fk_cp_payment_type` FOREIGN KEY (`fk_payment_type`) REFERENCES `mst_payment_types` (`id`),
   CONSTRAINT `fk_cp_department` FOREIGN KEY (`fk_department`) REFERENCES `mst_department` (`id`),
   CONSTRAINT `fk_cp_course` FOREIGN KEY (`fk_course`) REFERENCES `mst_course` (`id`),
-  CONSTRAINT `fk_cp_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_cp_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_cp_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_cp_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 
@@ -87,8 +87,8 @@ CREATE TABLE `mst_exam` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_exam_department` FOREIGN KEY (`fk_department`) REFERENCES `mst_department` (`id`),
   CONSTRAINT `fk_exam_course` FOREIGN KEY (`fk_course`) REFERENCES `mst_course` (`id`),
-  CONSTRAINT `fk_exam_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_exam_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_exam_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_exam_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 
@@ -122,8 +122,8 @@ CREATE TABLE `mst_student` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_student_department` FOREIGN KEY (`fk_department`) REFERENCES `mst_department` (`id`),
   CONSTRAINT `fk_student_course` FOREIGN KEY (`fk_course`) REFERENCES `mst_course` (`id`),
-  CONSTRAINT `fk_student_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_student_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_student_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_student_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 CREATE TABLE `mst_payment_mode` (
@@ -136,8 +136,8 @@ CREATE TABLE `mst_payment_mode` (
   `modified_by`   VARCHAR(50)  NULL,
   `modified_date` DATETIME     NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_ptm_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_ptm_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_ptm_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_ptm_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 CREATE TABLE `trn_exam_result` (
@@ -158,8 +158,8 @@ CREATE TABLE `trn_exam_result` (
   CONSTRAINT `fk_er_student` FOREIGN KEY (`fk_student`) REFERENCES `mst_student` (`id`),
   CONSTRAINT `fk_er_course` FOREIGN KEY (`fk_course`) REFERENCES `mst_course` (`id`),
   CONSTRAINT `fk_er_exam` FOREIGN KEY (`fk_course`) REFERENCES `mst_exam` (`id`),
-  CONSTRAINT `fk_er_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_er_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_er_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_er_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
 
 
@@ -182,6 +182,6 @@ CREATE TABLE `trn_course_payments` (
   CONSTRAINT `fk_cpay_student` FOREIGN KEY (`fk_student`) REFERENCES `mst_student` (`id`),
   CONSTRAINT `fk_cpay_department` FOREIGN KEY (`fk_department`) REFERENCES `mst_department` (`id`),
   CONSTRAINT `fk_cpay_course` FOREIGN KEY (`fk_course`) REFERENCES `mst_course` (`id`),
-  CONSTRAINT `fk_cpay_created_by` FOREIGN KEY (`created_by`) REFERENCES `user_info` (`login`),
-  CONSTRAINT `fk_cpay_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user_info` (`login`)
+  CONSTRAINT `fk_cpay_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
+  CONSTRAINT `fk_cpay_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );

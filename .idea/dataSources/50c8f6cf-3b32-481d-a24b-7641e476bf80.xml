@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="pgd@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="pgd">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="cars"/>
+    <schema id="4" parent="1" name="edgevantage_archive_2016"/>
+    <schema id="5" parent="1" name="edgevantage_doc_index"/>
+    <schema id="6" parent="1" name="edgevantage_exdb_scb"/>
+    <schema id="7" parent="1" name="edgevantage_v2_scb"/>
+    <schema id="8" parent="1" name="ejudge"/>
+    <schema id="9" parent="1" name="information_schema"/>
+    <schema id="10" parent="1" name="jhipsterhazelcastsampleapplication"/>
+    <schema id="11" parent="1" name="jwt"/>
+    <schema id="12" parent="1" name="mysql"/>
+    <schema id="13" parent="1" name="osvik"/>
+    <schema id="14" parent="1" name="performance_schema"/>
+    <schema id="15" parent="1" name="rtgs_ub"/>
+    <schema id="16" parent="1" name="srrs"/>
+    <schema id="17" parent="1" name="sys"/>
+    <schema id="18" parent="1" name="test"/>
+    <schema id="19" parent="1" name="yourbox"/>
+    <table id="20" parent="2" name="mst_department"/>
+    <column id="21" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="22" parent="20" name="d_code">
+      <Position>2</Position>
+      <DataType>varchar(75)|0</DataType>
+    </column>
+    <column id="23" parent="20" name="d_name">
+      <Position>3</Position>
+      <DataType>varchar(150)|0</DataType>
+    </column>
+    <column id="24" parent="20" name="d_description">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="25" parent="20" name="is_active">
+      <Position>5</Position>
+      <DataType>bit(1)|0</DataType>
+    </column>
+    <column id="26" parent="20" name="created_by">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="27" parent="20" name="created_date">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="28" parent="20" name="modified_by">
+      <Position>8</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="29" parent="20" name="modified_date">
+      <Position>9</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="30" parent="20" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
