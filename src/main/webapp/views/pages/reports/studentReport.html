@@ -1,0 +1,112 @@
+<div id="page-wrapper" class="col-lg-10" style="background-color: #6a6a6a">
+
+    <div style="border-radius: 8px;border: 2px solid #aea2cc;padding: 2px;margin: 2px;margin-top: 15px;background-color: #ffffff">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <br/>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-money"></i> Reports
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-paypal"></i> Student Report
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb">
+                            <div class="tab-pane active" id="horizontal-form">
+                                <form role="form">
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <label for="course" class="col-sm-2 control-label">Course</label>
+                                                <div class="col-sm-6">
+                                                    <select chosen options="courseList" id="course"
+                                                            ng-disabled="editMode" class="form-control1"
+                                                            ng-model="selectedCourse"
+                                                            ng-options="obj as obj.name + ' - ' + obj.year + ' ('+obj.batch+' Batch)' for obj in courseList">
+                                                        <option value="">--Please Select--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="!!selectedCourse.name" id="printDiv">
+                <div class="col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb">
+                            <div class="tab-pane active" id="horizontal-form">
+                                <h4>List of Registered Student fot {{selectedCourse.name}} - {{selectedCourse.year}}
+                                    ({{selectedCourse.batch}} Batch)</h4>
+                                <label>Commenced on : {{selectedCourse.fromDate | date : 'dd-MM-yyyy'}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>Coordinator : {{selectedCourse.supervisor.login}}</label>
+
+                                <br/>
+                                <br/>
+                                <table class="generalTable">
+                                    <thead>
+                                    <tr>
+                                        <th>Reg. No.</th>
+                                        <th>Name</th>
+                                        <th>Reg. Fee</th>
+                                        <th>Library Fee</th>
+                                        <th>Library Deposit</th>
+                                        <th>Exam Fee</th>
+                                        <th>Part I Fee</th>
+                                        <th>Part II Fee</th>
+                                        <th>Part III Fee</th>
+                                        <th>N.I.C. No</th>
+                                        <th>Signature</th>
+                                        <th>Remark</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="e in studentList">
+                                        <td style="text-align: left;width: 10%;">{{e.code}}</td>
+                                        <td style="text-align: left;width: 15%;">{{e.fullName}}</td>
+                                        <td style="text-align: left;width: 5%;"></td>
+                                        <td style="text-align: left;width: 5%;"></td>
+                                        <td style="text-align: left;width: 5%;"></td>
+                                        <td style="text-align: left;width: 5%;"></td>
+                                        <td style="text-align: left;width: 5%;"></td>
+                                        <td style="text-align: left;width: 5%;"></td>
+                                        <td style="text-align: left;width: 5%;"></td>
+                                        <td style="text-align: left;width: 10%;">{{e.nic}}</td>
+                                        <td style="text-align: left;width: 15%;"></td>
+                                        <td style="text-align: left;width: 15%;"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-if="!!selectedCourse.name">
+                <div class="col-lg-12">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb">
+                            <form>
+                                <button ng-click="status.open =true;printDiv('printDiv');" class="btn-primary btn-sm">Print
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

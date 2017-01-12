@@ -104,6 +104,12 @@ activitiAdminApp
                     resolve: authRouteResolver,
                     reloadOnSearch: true
                 })
+                .when('/studentReport', {
+                    templateUrl: 'views/pages/reports/studentReport.html',
+                    controller: 'StudentReportController',
+                    resolve: authRouteResolver,
+                    reloadOnSearch: true
+                })
                 .when('/', {
                     templateUrl: 'views/login.html',
                     controller: 'LoginController',
