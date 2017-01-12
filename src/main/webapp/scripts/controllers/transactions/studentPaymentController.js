@@ -1,17 +1,18 @@
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
-activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope', '$http', 'toastr',
-    function ($rootScope, $scope, $http, toastr) {
+activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope', '$http', 'toastr','$uibModal',
+    function ($rootScope, $scope, $http, toastr,$uibModal) {
 
         $rootScope.navigation = {selection: 'studentPayments'};
 
-        $scope.departmentList = [];
+        $scope.paymentList = [];
         $scope.department = {};
         $scope.maxSize = 10;
         $scope.itemsPerPage = 0;
         $scope.totalItems = 0;
         $scope.currentPage = 1;
+        $scope.selectedStudent = {};
 
         $scope.editMode = false;
 
@@ -22,23 +23,39 @@ activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope',
         });
 
         $scope.pageChanged = function () {
+            $scope.paymentList = [];
             if (!$scope.departmentName) {
                 name = '*';
             } else {
                 name = $scope.departmentName;
             }
-            $http.get('app/api/v1/department/all', {
+            $http.get('app/api/v1/coursePayments/all', {
                 params: {
                     page: $scope.currentPage,
                     name: name
                 }
             }).success(function (rs) {
-                $scope.departmentList = rs.content;
-                $scope.totalItems = rs.totalElements;
-                $scope.itemsPerPage = rs.size;
+                $scope.paymentList = rs;
             }).error(function (e) {
-                $scope.departmentList = [];
+                $scope.paymentList = [];
                 console.log(e);
+            });
+        };
+
+        $scope.makePayment = function (element) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'views/pages/transactions/payment.html',
+                controller: 'paymentController',
+                size: 'lg',
+                resolve: {
+                    element: function () {
+                        return element;
+                    },
+                    selectedStudent: function () {
+                        return $scope.selectedStudent;
+                    }
+                }
             });
         };
 
@@ -85,5 +102,5 @@ activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope',
             $scope.pageChanged();
         };
 
-        $scope.pageChanged();
+        // $scope.pageChanged();
     }]);

@@ -28,7 +28,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='additional_components/angular-chosen-localytics/chosen-spinner.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,30 +36,72 @@
     <script src="additional_components/libs/html5shiv.js"></script>
     <script src="additional_components/libs/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .modal-header {
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .modal-content {
+            -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #999;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 6px;
+            outline: 0;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        }
+        .modal-body {
+            position: relative;
+            padding: 15px;
+        }
+        .modal-footer {
+            padding: 15px;
+            text-align: right;
+            border-top: 1px solid #e5e5e5;
+        }
+    </style>
 </head>
 <body ng-app="activitiAdminApp" style="background-color: #6a6a6a">
 <!--Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" ng-show="authenticated" ng-cloak role="navigation">
-    <div class="container-fluid" style="padding-top: 3px;border-bottom: 2px solid #aea2cc;" >
+    <div class="container-fluid" style="padding-top: 3px;border-bottom: 2px solid #aea2cc;">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
                 <img src="../images/Faculty_of_science_colombo_logo.png" style="height: 60px;width: auto">
             </a>
         </div>
         <ul class="nav navbar-nav">
-            <li ng-class="{active: navigation.selection == 'dashboard'}"><a class="menu-item" href="#dashboard">Home</a></li>
-            <li ng-class="{active: navigation.selection == 'department'}"><a class="menu-item" href="#departmentMaster">Departments</a></li>
-            <li ng-class="{active: navigation.selection == 'course'}"><a class="menu-item" href="#courseMaster">Courses</a></li>
-            <li ng-class="{active: navigation.selection == 'paymentType'}"><a class="menu-item" href="#paymentType">Payment Type</a></li>
+            <li ng-class="{active: navigation.selection == 'dashboard'}"><a class="menu-item" href="#dashboard">Home</a>
+            </li>
+            <li ng-class="{active: navigation.selection == 'department'}"><a class="menu-item" href="#departmentMaster">Departments</a>
+            </li>
+            <li ng-class="{active: navigation.selection == 'course'}"><a class="menu-item"
+                                                                         href="#courseMaster">Courses</a></li>
+            <li ng-class="{active: navigation.selection == 'paymentType'}"><a class="menu-item" href="#paymentType">Payment
+                Type</a></li>
             <!--<li ng-class="{active: navigation.selection == 'paymentMode'}"><a class="menu-item" href="#paymentMode">Payment Mode</a></li>-->
-            <li ng-class="{active: navigation.selection == 'coursePayment'}"><a class="menu-item" href="#courseWisePaymentMaster">Courses Payments</a></li>
-            <li ng-class="{active: navigation.selection == 'exam'}"><a class="menu-item" href="#examsMaster">Exams</a></li>
-            <li ng-class="{active: navigation.selection == 'student'}"><a class="menu-item" href="#studentMaster">Student</a></li>
+            <li ng-class="{active: navigation.selection == 'coursePayment'}"><a class="menu-item"
+                                                                                href="#courseWisePaymentMaster">Courses
+                Payments</a></li>
+            <li ng-class="{active: navigation.selection == 'exam'}"><a class="menu-item" href="#examsMaster">Exams</a>
+            </li>
+            <li ng-class="{active: navigation.selection == 'student'}"><a class="menu-item" href="#studentMaster">Student</a>
+            </li>
             <!--<li ng-class="{active: navigation.selection == 'examResult'}"><a class="menu-item" href="#examResults">Results</a></li>-->
-            <li ng-class="{active: navigation.selection == 'studentPayments'}"><a class="menu-item" href="#studentPayments">Payments</a></li>
+            <li ng-class="{active: navigation.selection == 'studentPayments'}"><a class="menu-item"
+                                                                                  href="#studentPayments">Payments</a>
+            </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a class="menu-item" href="#logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a class="menu-item" href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -75,7 +117,7 @@
     </div>
 </div>
 
-<div ng-view="" ng-cloak ></div>
+<div ng-view="" ng-cloak></div>
 <script type="text/ng-template" id="userItemTemplate.html"><a typeahead-scroll-item="$parent.$index"><span
         class="glyphicon glyphicon-user"></span><span class="user-label"
                                                       bind-html-unsafe="match.label | typeaheadHighlight:query"></span></a>
@@ -115,6 +157,7 @@
 <script src="scripts/controllers/masters/paymentModeController.js"></script>
 <script src="scripts/controllers/masters/paymentTypeController.js"></script>
 <script src="scripts/controllers/transactions/studentPaymentController.js"></script>
+<script src="scripts/controllers/transactions/paymentController.js"></script>
 <script src="scripts/controllers/unitController.js"></script>
 <script src="scripts/controllers/bankController.js"></script>
 <script src="scripts/controllers/pos/stockController.js"></script>

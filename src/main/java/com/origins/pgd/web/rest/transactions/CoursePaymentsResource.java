@@ -37,9 +37,9 @@ public class CoursePaymentsResource {
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed
-    public  Page<CoursePaymentDao> getAllByPage(@RequestParam("name") String name, @RequestParam("page") Integer page) {
+    public  List getAllByPage(@RequestParam("name") String name, @RequestParam("page") Integer page) {
         name = name == null ? "%" : name.replace("*", "%");
-        return coursePaymentsResource.findAllA( new PageRequest(page - 1, Integer.parseInt(env.getProperty("result.page.size")), new Sort(Sort.Direction.ASC, "id")));
+        return coursePaymentsResource.findAllA();
     }
 
     @RequestMapping(value = {"/save"}, method = {RequestMethod.POST}, produces = {"application/json"})

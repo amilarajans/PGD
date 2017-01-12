@@ -28,10 +28,13 @@
                                         <div class="row">
                                             <div class="col-lg-7">
                                                 <div class="form-group">
-                                                    <label for="studentList" class="col-sm-3 control-label">Department</label>
+                                                    <label for="studentList"
+                                                           class="col-sm-3 control-label">Student</label>
                                                     <div class="col-sm-4">
-                                                        <select chosen options="studentList" id="studentList" ng-disabled="editMode" class="form-control1"
-                                                                ng-model="coursePayment.course"
+                                                        <select chosen options="studentList" id="studentList"
+                                                                ng-disabled="editMode" class="form-control1"
+                                                                ng-model="selectedStudent"
+                                                                ng-change="pageChanged()"
                                                                 ng-options="obj as obj.code + ' - ' + obj.fullName+ ' - [' + obj.nic +']' for obj in studentList">
                                                             <option value="">--Please Select--</option>
                                                         </select>
@@ -55,23 +58,34 @@
                     <table class="generalTable">
                         <thead>
                         <tr>
-                            <th>Course Id</th>
-                            <th>Course Name</th>
+                            <th>#</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Payment Date</th>
+                            <th>Reference</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>biochemistry</td>
-                            <td>
-                                <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target=".bs-example-modal-lg"> Update
+                        <tr ng-repeat="e in paymentList">
+                            <td style="text-align: left;width: 10%;">{{e[0]}}</td>
+                            <td style="text-align: left;width: 15%;">{{e[1]}}</td>
+                            <td style="text-align: left;width: 15%;">{{e[2]}}</td>
+                            <td style="text-align: right;width: 10%;">{{e[3]| number : 2}}</td>
+                            <td style="text-align: center;width: 15%;">{{e[4] | date : 'dd-MM-yyyy'}}</td>
+                            <td style="text-align: left;width: 15%;">{{e[5]}}</td>
+                            <td style="text-align: center;width: 5%;">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="makePayment(e)">
+                                    Pay
                                 </button>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <uib-pagination ng-change="pageChanged()" total-items="totalItems" items-per-page="itemsPerPage"
+                                    ng-model="currentPage" max-size="maxSize" class="pagination-sm"
+                                    boundary-link-numbers="true"></uib-pagination>
                 </div>
             </div>
 
