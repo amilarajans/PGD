@@ -2,6 +2,7 @@ CREATE TABLE `mst_department` (
   `id`            BIGINT       NOT NULL AUTO_INCREMENT,
   `d_code`        VARCHAR(75)  NULL,
   `d_name`        VARCHAR(150) NULL,
+  `d_icon`        VARCHAR(255) NULL,
   `d_description` VARCHAR(255) NULL,
   `is_active`     BIT(1)       NULL,
   `created_by`    VARCHAR(50)  NULL,
@@ -166,8 +167,7 @@ CREATE TABLE `trn_exam_result` (
 CREATE TABLE `trn_course_payments` (
   `id`            BIGINT       NOT NULL AUTO_INCREMENT,
   `refference`    VARCHAR(255) NULL,
-  `fk_department` BIGINT       NULL,
-  `fk_course`     BIGINT       NULL,
+  `fk_payment`    BIGINT       NULL,
   `fk_student`    BIGINT       NULL,
   `paymentDate`   DATETIME     NULL,
   `fk_pay_mode`   BIGINT       NULL,
@@ -180,8 +180,19 @@ CREATE TABLE `trn_course_payments` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_cpay_pay_mode` FOREIGN KEY (`fk_pay_mode`) REFERENCES `mst_payment_mode` (`id`),
   CONSTRAINT `fk_cpay_student` FOREIGN KEY (`fk_student`) REFERENCES `mst_student` (`id`),
-  CONSTRAINT `fk_cpay_department` FOREIGN KEY (`fk_department`) REFERENCES `mst_department` (`id`),
-  CONSTRAINT `fk_cpay_course` FOREIGN KEY (`fk_course`) REFERENCES `mst_course` (`id`),
+  CONSTRAINT `fk_cpay_payment` FOREIGN KEY (`fk_payment`) REFERENCES `mst_course_payments` (`id`),
   CONSTRAINT `fk_cpay_created_by` FOREIGN KEY (`created_by`) REFERENCES `USER_INFO` (`login`),
   CONSTRAINT `fk_cpay_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `USER_INFO` (`login`)
 );
+
+INSERT INTO `mst_department`
+(`d_code`, `d_name`, `d_icon`, `is_active`, `created_by`, `created_date`)
+VALUES
+  ('CHEM', 'Chemistry', 'fa fa-flask', true, 'admin', now()),
+  ('MATH', 'Mathematics', 'fa fa-calculator', true, 'admin', now()),
+  ('NUCE', 'Nuclear Science', 'fa fa-bomb', true, 'admin', now()),
+  ('PHYS', 'Physics', 'fa fa-cogs', true, 'admin', now()),
+  ('PLSC', 'Plant Science', 'fa fa-leaf', true, 'admin', now()),
+  ('STAT', 'Statistics', 'fa fa-line-chart', true, 'admin', now()),
+  ('ZOOL', 'Zoology', 'fa fa-asterisk', true, 'admin', now());
+

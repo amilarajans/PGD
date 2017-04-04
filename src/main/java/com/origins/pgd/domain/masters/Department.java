@@ -3,12 +3,12 @@ package com.origins.pgd.domain.masters;
 import com.origins.pgd.domain.User;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
@@ -30,6 +30,10 @@ public class Department implements Serializable {
     @Size(max = 150)
     @Column(name = "d_name")
     private String name;
+
+    @Size(max = 255)
+    @Column(name = "d_icon")
+    private String icon;
 
     @Size(max = 255)
     @Column(name = "d_description")
@@ -139,7 +143,14 @@ public class Department implements Serializable {
         this.modifiedDate = modifiedDate;
     }
 
-//    public List<Course> getCourse() {
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+    //    public List<Course> getCourse() {
 //        return course;
 //    }
 //
