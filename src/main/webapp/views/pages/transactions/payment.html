@@ -34,8 +34,8 @@
                         <label for="code" class="col-sm-3 control-label">Date</label>
                         <div class="col-sm-4">
                             <input ng-disabled="editMode" id="code" type="date"
-                                   class="form-control"
-                                   ng-model="course.code">
+                                   class="form-control" value="{{paymentObj.paymentDate}}"
+                                   ng-model="paymentObj.paymentDate"/>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                class="col-sm-3 control-label">Reference</label>
                         <div class="col-sm-8">
                                                         <textarea cols="60" rows="6" id="description" type="text"
-                                                                  ng-model="course.description"/>
+                                                                  ng-model="paymentObj.reference"/>
                         </div>
                     </div>
                 </div>
