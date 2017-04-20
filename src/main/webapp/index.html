@@ -108,7 +108,6 @@
         </ul>
     </div>
 </nav>
-
 <div class="alert-wrapper" ng-cloak>
     <div class="alert fadein {{alerts.current.type}}" ng-show="alerts.current" ng-click="dismissAlert()">
         <i class="glyphicon"
@@ -120,7 +119,7 @@
     </div>
 </div>
 
-<div ng-view="" ng-cloak></div>
+<div loading-bar-container ng-view="" ng-cloak></div>
 <script type="text/ng-template" id="userItemTemplate.html"><a typeahead-scroll-item="$parent.$index"><span
         class="glyphicon glyphicon-user"></span><span class="user-label"
                                                       bind-html-unsafe="match.label | typeaheadHighlight:query"></span></a>
@@ -177,7 +176,8 @@
 <script src="scripts/monitoring-controller.js"></script>
 <script src="scripts/services.js"></script>
 <script src="scripts/utils.js"></script>
-<script src="additional_components/angular-chosen-localytics/dist/angular-chosen.js"></script>
+<script src="additional_components/angular-loading-bar/build/loading-bar.js"></script>
+<link rel='stylesheet' href='additional_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
 
 </body>
 </html>

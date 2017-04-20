@@ -3,7 +3,7 @@
 /* App Module */
 
 var activitiAdminApp = angular.module('activitiAdminApp', ['angular.chosen','http-auth-interceptor', 'ngResource', 'ngRoute', 'ngCookies',
-    'pascalprecht.translate', 'ngGrid', 'ui.select', 'ui.bootstrap', 'angularFileUpload', 'ngSanitize', 'toastr', 'angular.filter']);
+    'pascalprecht.translate', 'ngGrid', 'ui.select', 'ui.bootstrap', 'angularFileUpload', 'ngSanitize', 'toastr', 'angular.filter','angular-loading-bar','ngAnimate']);
 
 var authRouteResolver = ['$rootScope', 'AuthenticationSharedService', function ($rootScope, AuthenticationSharedService) {
 
