@@ -9,6 +9,10 @@ activitiAdminApp.controller('paymentController', ['$rootScope', '$filter', '$sco
         $scope.paymentObj = {};
         $scope.paymentObj.paymentDate = $filter("date")(Date.now(), 'yyyy-MM-dd');
 
+        $scope.ok = function () {
+            $uibModalInstance.close($scope.paymentObj);
+        };
+
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };

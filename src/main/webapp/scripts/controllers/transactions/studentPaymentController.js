@@ -57,6 +57,12 @@ activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope',
                     }
                 }
             });
+
+            modalInstance.result.then(function (payment) {
+                alert(payment)
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
         };
 
         $scope.add = function () {
