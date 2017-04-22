@@ -209,5 +209,18 @@
       "CREATED": "User '{{login}}' created.",
       "PASSWORD-CHANGED": "Password for '{{login}}' is changed successfully."
     }
+  },
+  "MASTER_DATA": "Master Data",
+  "DEPARTMENT": {
+    "FORM": {
+      "CODE": "Department Code",
+      "NAME": "Department Name"
+    },
+    "TABLE": {
+      "CODE": "Code",
+      "NAME": "Name"
+    },
+    "NAME": "Department Details",
+    "DESCRIPTION": "Description"
   }
 }

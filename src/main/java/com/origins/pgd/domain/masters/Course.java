@@ -1,8 +1,6 @@
 package com.origins.pgd.domain.masters;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.origins.pgd.domain.User;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -11,7 +9,6 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
