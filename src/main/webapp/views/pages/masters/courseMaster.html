@@ -32,7 +32,7 @@
                                                     <div class="col-sm-4">
                                                         <select chosen id="department" ng-disabled="editMode"
                                                                 ng-model="course.department" options="departmentList"
-                                                                ng-options="obj as obj.name for obj in departmentList">
+                                                                ng-options="obj as obj.name for obj in departmentList track by obj.id">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
@@ -48,7 +48,7 @@
                                                     <div class="col-sm-4">
                                                         <select chosen id="supervisor" ng-disabled="editMode"
                                                                 ng-model="course.supervisor" options="userList"
-                                                                ng-options="obj as obj.login for obj in userList">
+                                                                ng-options="obj as obj.login for obj in userList track by obj.login">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
@@ -101,7 +101,7 @@
                                                     <div class="col-sm-4">
                                                         <select chosen id="year"
                                                                 ng-model="course.year" option="yearList"
-                                                                ng-options="obj as obj for obj in yearList">
+                                                                ng-options="obj as obj for obj in yearList track by obj">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
