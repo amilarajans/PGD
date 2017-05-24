@@ -34,7 +34,7 @@
                                                         <select  chosen options="departmentList" id="department" ng-disabled="editMode"
                                                                 class="form-control1"
                                                                 ng-model="exam.department"
-                                                                ng-options="obj as obj.name for obj in departmentList">
+                                                                ng-options="obj as obj.name for obj in departmentList track by obj.id">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
@@ -49,7 +49,7 @@
                                                     <div class="col-sm-4">
                                                         <select  chosen options="courseList" id="course" ng-disabled="editMode" class="form-control1"
                                                                 ng-model="exam.course"
-                                                                ng-options="obj as obj.name for obj in courseList">
+                                                                ng-options="obj as obj.name for obj in courseList track by obj.id">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>

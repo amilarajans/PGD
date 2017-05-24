@@ -33,7 +33,7 @@
                                                         <select chosen options="departmentList" id="department" ng-disabled="editMode"
                                                                 class="form-control1"
                                                                 ng-model="coursePayment.department"
-                                                                ng-options="obj as obj.name for obj in departmentList">
+                                                                ng-options="obj as obj.name for obj in departmentList  track by obj.id">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
@@ -48,7 +48,7 @@
                                                     <div class="col-sm-4">
                                                         <select chosen options="courseList" id="course" ng-disabled="editMode" class="form-control1"
                                                                 ng-model="coursePayment.course"
-                                                                ng-options="obj as obj.name for obj in courseList">
+                                                                ng-options="obj as obj.name for obj in courseList track by obj.id">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
@@ -63,7 +63,7 @@
                                                     <div class="col-sm-4">
                                                         <select chosen options="paymentTypeList" id="paymentType" ng-disabled="editMode" class="form-control1"
                                                                 ng-model="coursePayment.paymentType"
-                                                                ng-options="obj as obj.type for obj in paymentTypeList">
+                                                                ng-options="obj as obj.type for obj in paymentTypeList track by obj.id">
                                                             <option value="">--Please Select--</option>
                                                         </select>
                                                     </div>
