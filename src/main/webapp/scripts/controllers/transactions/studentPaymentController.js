@@ -59,7 +59,14 @@ activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope',
             });
 
             modalInstance.result.then(function (payment) {
-                alert(payment)
+
+                $http.post('app/api/v1/department/update', $scope.department).success(function (data) {
+                    toastr.success('Successfully Updated !!');
+                    $scope.pageChanged();
+                    $scope.reset();
+                }).error(function (data) {
+                    toastr.error(data.message);
+                });
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });

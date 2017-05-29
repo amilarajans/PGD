@@ -4,6 +4,8 @@ import com.origins.pgd.domain.User;
 import com.origins.pgd.domain.masters.Course;
 import com.origins.pgd.domain.masters.Department;
 import com.origins.pgd.domain.masters.PaymentMode;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -19,6 +21,8 @@ import java.util.Date;
 @Entity
 @Table(name = "trn_course_payments")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Getter
+@Setter
 public class CoursePayment implements Serializable {
     private static final long serialVersionUID =  1L;
     @Id
@@ -65,102 +69,6 @@ public class CoursePayment implements Serializable {
     @ManyToOne
     @JoinColumn(name = "fk_pay_mode")
     private PaymentMode paymentMode;
-
-    public BigInteger getId() {
-        return id;
-    }
-
-    public void setId(BigInteger id) {
-        this.id = id;
-    }
-
-    public String getRefference() {
-        return refference;
-    }
-
-    public void setRefference(String refference) {
-        this.refference = refference;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Date getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(Date paymentDate) {
-        this.paymentDate = paymentDate;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public User getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public User getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(User modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public Date getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(Date modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public CoursePayment getCoursePayment() {
-        return coursePayment;
-    }
-
-    public void setCoursePayment(CoursePayment coursePayment) {
-        this.coursePayment = coursePayment;
-    }
-
-    public User getStudent() {
-        return student;
-    }
-
-    public void setStudent(User student) {
-        this.student = student;
-    }
-
-    public PaymentMode getPaymentMode() {
-        return paymentMode;
-    }
-
-    public void setPaymentMode(PaymentMode paymentMode) {
-        this.paymentMode = paymentMode;
-    }
 
     @Override
     public String toString() {
