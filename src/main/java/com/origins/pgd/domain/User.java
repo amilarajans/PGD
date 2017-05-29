@@ -2,6 +2,8 @@ package com.origins.pgd.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
@@ -18,6 +20,8 @@ import java.util.Set;
 @Entity
 @Table(name = "USER_INFO")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Getter
+@Setter
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,61 +51,6 @@ public class User implements Serializable {
     @JoinTable(name = "USER_AUTHORITY", joinColumns = {@javax.persistence.JoinColumn(name = "login", referencedColumnName = "login")}, inverseJoinColumns = {@javax.persistence.JoinColumn(name = "name", referencedColumnName = "name")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Authority> authorities;
-
-    public User() {
-    }
-
-    public User(String login) {
-        this.login = login;
-    }
-
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Set<Authority> getAuthorities() {
-        return this.authorities;
-    }
-
-    public void setAuthorities(Set<Authority> authorities) {
-        this.authorities = authorities;
-    }
 
     public boolean equals(Object o) {
         if (this == o) {

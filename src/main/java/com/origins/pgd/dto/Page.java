@@ -1,30 +1,19 @@
 package com.origins.pgd.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Created by Amila-Kumara on 3/19/2016.
  */
+@Getter
+@Setter
 public class Page {
     private Long count;
     private Long pageSize;
 
     public Page(Long count, Long pageSize) {
         this.count = count;
-        this.pageSize = pageSize;
-    }
-
-    public Long getCount() {
-        return count;
-    }
-
-    public void setCount(Long count) {
-        this.count = count;
-    }
-
-    public Long getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Long pageSize) {
         this.pageSize = pageSize;
     }
 

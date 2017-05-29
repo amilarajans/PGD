@@ -2,6 +2,8 @@ package com.origins.pgd.dto;
 
 import com.origins.pgd.domain.Authority;
 import com.origins.pgd.domain.User;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,8 @@ import java.util.List;
 /**
  * Created by Amila-Kumara on 3/12/2016.
  */
+@Getter
+@Setter
 public class UserRepresentation {
     private String login;
     private String firstName;
@@ -29,45 +33,5 @@ public class UserRepresentation {
                 this.authorities.add(authority.getName());
             }
         }
-    }
-
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<String> getAuthorities() {
-        return this.authorities;
-    }
-
-    public void setAuthorities(List<String> authorities) {
-        this.authorities = authorities;
     }
 }
