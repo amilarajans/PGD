@@ -1,9 +1,7 @@
 package com.origins.pgd.domain.transactions;
 
 import com.origins.pgd.domain.User;
-import com.origins.pgd.domain.masters.Course;
-import com.origins.pgd.domain.masters.Department;
-import com.origins.pgd.domain.masters.PaymentMode;
+import com.origins.pgd.domain.masters.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cache;
@@ -60,11 +58,11 @@ public class CoursePayment implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "fk_payment")
-    private CoursePayment coursePayment;
+    private CourseWisePayments coursePayment;
 
     @ManyToOne
     @JoinColumn(name = "fk_student")
-    private User student;
+    private Student student;
 
     @ManyToOne
     @JoinColumn(name = "fk_pay_mode")

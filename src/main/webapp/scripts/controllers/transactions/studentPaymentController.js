@@ -60,7 +60,13 @@ activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope',
 
             modalInstance.result.then(function (payment) {
 
-                $http.post('app/api/v1/department/update', $scope.department).success(function (data) {
+                $scope.coursePayment={};
+                $scope.coursePayment.paymentDate=payment.paymentDate;
+                $scope.coursePayment.refference=payment.reference;
+                $scope.coursePayment.student=$scope.selectedStudent;
+                $scope.coursePayment.coursePayment={id:element[0]};
+
+                $http.post('app/api/v1/coursePayments/update', $scope.coursePayment).success(function (data) {
                     toastr.success('Successfully Updated !!');
                     $scope.pageChanged();
                     $scope.reset();
@@ -72,48 +78,4 @@ activitiAdminApp.controller('StudentPaymentController', ['$rootScope', '$scope',
             });
         };
 
-        $scope.add = function () {
-            $http.post('app/api/v1/department/save', $scope.department).success(function (data) {
-                toastr.success('Successfully Saved !!');
-                $scope.pageChanged();
-                $scope.reset();
-            }).error(function (data) {
-                toastr.error('Failed to Save !!');
-            });
-        };
-
-        $scope.update = function () {
-            $http.post('app/api/v1/department/update', $scope.department).success(function (data) {
-                toastr.success('Successfully Updated !!');
-                $scope.pageChanged();
-                $scope.reset();
-            }).error(function (data) {
-                toastr.error(data.message);
-            });
-        };
-
-        $scope.edit = function (department) {
-            $scope.department = department;
-            $scope.editMode = true;
-        };
-
-        $scope.delete = function (id) {
-            $http.delete('app/api/v1/department/delete/' + id).success(function (data) {
-                toastr.success('Successfully Deleted !!');
-                $scope.pageChanged();
-            }).error(function (data) {
-                toastr.error(data.message);
-            });
-        };
-
-        $scope.reset = function () {
-            $scope.department = {};
-            $scope.editMode = false;
-        };
-
-        $scope.search = function () {
-            $scope.pageChanged();
-        };
-
-        // $scope.pageChanged();
     }]);

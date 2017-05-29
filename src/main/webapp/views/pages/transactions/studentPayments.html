@@ -76,7 +76,7 @@
                             <td style="text-align: center;width: 15%;">{{e[4] | date : 'dd-MM-yyyy'}}</td>
                             <td style="text-align: left;width: 15%;">{{e[5]}}</td>
                             <td style="text-align: center;width: 5%;">
-                                <button type="submit" class="btn btn-primary btn-sm" ng-click="makePayment(e)">
+                                <button type="submit" ng-if="!e[4]" class="btn btn-primary btn-sm" ng-click="makePayment(e)">
                                     Pay
                                 </button>
                             </td>

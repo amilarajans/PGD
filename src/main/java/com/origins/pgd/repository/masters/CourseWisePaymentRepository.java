@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigInteger;
+
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
-public interface CourseWisePaymentRepository extends JpaRepository<CourseWisePayments, Integer> {
+public interface CourseWisePaymentRepository extends JpaRepository<CourseWisePayments, BigInteger> {
 //    @Query(value = "SELECT exam FROM CourseWisePayments c WHERE c.code=:code")
 //    CourseWisePayments findOneByCode(@Param("code") String code);
 //

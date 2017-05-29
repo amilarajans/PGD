@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.origins.pgd.domain.dao.CoursePaymentDao;
 import com.origins.pgd.domain.masters.Student;
 import com.origins.pgd.domain.transactions.CoursePayment;
+import com.origins.pgd.repository.masters.CourseWisePaymentRepository;
 import com.origins.pgd.repository.masters.StudentRepository;
 import com.origins.pgd.repository.transactions.CoursePaymentRepository;
 import com.origins.pgd.util.SecurityUtils;
@@ -29,11 +30,18 @@ import java.util.Map;
 public class CoursePaymentsResource {
     private final Logger log = LoggerFactory.getLogger(CoursePaymentsResource.class);
 
-    @Autowired
     private CoursePaymentRepository coursePaymentsResource;
 
-    @Autowired
+    private CourseWisePaymentRepository courseWisePaymentRepository;
+
     private Environment env;
+
+    @Autowired
+    public CoursePaymentsResource(CoursePaymentRepository coursePaymentsResource, CourseWisePaymentRepository courseWisePaymentRepository, Environment env) {
+        this.coursePaymentsResource = coursePaymentsResource;
+        this.courseWisePaymentRepository = courseWisePaymentRepository;
+        this.env = env;
+    }
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed
@@ -53,6 +61,7 @@ public class CoursePaymentsResource {
     @RequestMapping(value = {"/update"}, method = {RequestMethod.POST}, produces = {"application/json"})
     @Timed
     public void update(@RequestBody CoursePayment coursePayment) {
+        coursePayment.setCoursePayment(courseWisePaymentRepository.findOne(coursePayment.getCoursePayment().getId()));
         coursePayment.setModifiedBy(SecurityUtils.getCurrentLogin());
         coursePayment.setModifiedDate(new Date());
         coursePaymentsResource.save(coursePayment);
