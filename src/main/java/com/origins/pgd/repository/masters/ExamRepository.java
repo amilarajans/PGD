@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigInteger;
+
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
-public interface ExamRepository extends JpaRepository<Exam, Integer> {
+public interface ExamRepository extends JpaRepository<Exam, BigInteger> {
     @Query(value = "SELECT exam FROM Exam exam WHERE exam.code=:code")
     Exam findOneByCode(@Param("code") String code);
 

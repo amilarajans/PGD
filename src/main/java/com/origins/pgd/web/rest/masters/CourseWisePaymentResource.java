@@ -4,7 +4,6 @@ import com.codahale.metrics.annotation.Timed;
 import com.origins.pgd.domain.masters.CourseWisePayments;
 import com.origins.pgd.repository.masters.CourseWisePaymentRepository;
 import com.origins.pgd.util.SecurityUtils;
-import com.origins.pgd.web.rest.exception.ConflictException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +25,14 @@ import java.util.List;
 public class CourseWisePaymentResource {
     private final Logger log = LoggerFactory.getLogger(CourseWisePaymentResource.class);
 
+    private final CourseWisePaymentRepository courseWisePaymentRepository;
+    private final Environment env;
+
     @Autowired
-    private CourseWisePaymentRepository courseWisePaymentRepository;
-    @Autowired
-    private Environment env;
+    public CourseWisePaymentResource(CourseWisePaymentRepository courseWisePaymentRepository, Environment env) {
+        this.courseWisePaymentRepository = courseWisePaymentRepository;
+        this.env = env;
+    }
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed

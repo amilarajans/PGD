@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
-public interface DepartmentRepository extends JpaRepository<Department, Integer> {
+public interface DepartmentRepository extends JpaRepository<Department, BigInteger> {
     @Query(value = "SELECT department FROM Department department WHERE department.code=:code")
     Department findOneByCode(@Param("code") String code);
 

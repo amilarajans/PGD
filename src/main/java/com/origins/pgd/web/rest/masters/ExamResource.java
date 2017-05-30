@@ -25,10 +25,14 @@ import java.util.List;
 public class ExamResource {
     private final Logger log = LoggerFactory.getLogger(ExamResource.class);
 
+    private final ExamRepository ExamRepository;
+    private final Environment env;
+
     @Autowired
-    private ExamRepository ExamRepository;
-    @Autowired
-    private Environment env;
+    public ExamResource(com.origins.pgd.repository.masters.ExamRepository examRepository, Environment env) {
+        ExamRepository = examRepository;
+        this.env = env;
+    }
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed

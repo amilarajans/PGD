@@ -24,11 +24,14 @@ import java.util.List;
 @RequestMapping(value = "api/v1/course")
 public class CourseResource {
     private final Logger log = LoggerFactory.getLogger(CourseResource.class);
+    private final CourseRepository CourseRepository;
+    private final Environment env;
 
     @Autowired
-    private CourseRepository CourseRepository;
-    @Autowired
-    private Environment env;
+    public CourseResource(com.origins.pgd.repository.masters.CourseRepository courseRepository, Environment env) {
+        CourseRepository = courseRepository;
+        this.env = env;
+    }
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed

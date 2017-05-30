@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
 /**
  * Created by Manoj Janaka on 14-11-2016.
  */
-public interface PaymentTypeRepository extends JpaRepository<PaymentType, Integer> {
+public interface PaymentTypeRepository extends JpaRepository<PaymentType, BigInteger> {
     @Query(value = "SELECT P FROM PaymentType P WHERE P.type=:code")
     PaymentType findOneByCode(@Param("code") String code);
 

@@ -26,10 +26,15 @@ import java.util.Collection;
 @RestController
 public class AccountResource {
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
+
+    private final UserRepository userRepository;
+    private final ObjectMapper objectMapper;
+
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private ObjectMapper objectMapper;
+    public AccountResource(UserRepository userRepository, ObjectMapper objectMapper) {
+        this.userRepository = userRepository;
+        this.objectMapper = objectMapper;
+    }
 
     @Timed
     @RequestMapping(value = {"/rest/authenticate"}, method = {RequestMethod.GET}, produces = {"application/json"})

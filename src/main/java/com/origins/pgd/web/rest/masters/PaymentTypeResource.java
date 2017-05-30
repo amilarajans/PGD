@@ -25,10 +25,14 @@ import java.util.List;
 public class PaymentTypeResource {
     private final Logger log = LoggerFactory.getLogger(PaymentTypeResource.class);
 
+    private final PaymentTypeRepository paymentTypeRepository;
+    private final Environment env;
+
     @Autowired
-    private PaymentTypeRepository paymentTypeRepository;
-    @Autowired
-    private Environment env;
+    public PaymentTypeResource(PaymentTypeRepository paymentTypeRepository, Environment env) {
+        this.paymentTypeRepository = paymentTypeRepository;
+        this.env = env;
+    }
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed

@@ -1,26 +1,18 @@
 package com.origins.pgd.web.rest.transactions;
 
 import com.codahale.metrics.annotation.Timed;
-import com.origins.pgd.domain.dao.CoursePaymentDao;
-import com.origins.pgd.domain.masters.Student;
 import com.origins.pgd.domain.transactions.CoursePayment;
 import com.origins.pgd.repository.masters.CourseWisePaymentRepository;
-import com.origins.pgd.repository.masters.StudentRepository;
 import com.origins.pgd.repository.transactions.CoursePaymentRepository;
 import com.origins.pgd.util.SecurityUtils;
-import com.origins.pgd.web.rest.exception.ConflictException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Manoj Janaka on 20-11-2016.
@@ -30,11 +22,9 @@ import java.util.Map;
 public class CoursePaymentsResource {
     private final Logger log = LoggerFactory.getLogger(CoursePaymentsResource.class);
 
-    private CoursePaymentRepository coursePaymentsResource;
-
-    private CourseWisePaymentRepository courseWisePaymentRepository;
-
-    private Environment env;
+    private final CoursePaymentRepository coursePaymentsResource;
+    private final CourseWisePaymentRepository courseWisePaymentRepository;
+    private final Environment env;
 
     @Autowired
     public CoursePaymentsResource(CoursePaymentRepository coursePaymentsResource, CourseWisePaymentRepository courseWisePaymentRepository, Environment env) {

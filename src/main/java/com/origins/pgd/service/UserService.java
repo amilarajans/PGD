@@ -26,12 +26,17 @@ import java.util.List;
 public class UserService {
     private static final String ADMIN_AUTHORITY = "ROLE_ADMIN";
     private final Logger log = LoggerFactory.getLogger(UserService.class);
+
+    private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final AuthorityRepository authorityRepository;
+
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private AuthorityRepository authorityRepository;
+    public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository, AuthorityRepository authorityRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+        this.authorityRepository = authorityRepository;
+    }
 
     public User createAdminUser(String login, String password, String firstName, String lastName, String email) {
         return createUser(login, password, firstName, lastName, email, ADMIN_AUTHORITY);

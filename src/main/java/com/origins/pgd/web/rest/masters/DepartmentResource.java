@@ -25,10 +25,14 @@ import java.util.List;
 public class DepartmentResource {
     private final Logger log = LoggerFactory.getLogger(DepartmentResource.class);
 
+    private final DepartmentRepository departmentRepository;
+    private final Environment env;
+
     @Autowired
-    private DepartmentRepository departmentRepository;
-    @Autowired
-    private Environment env;
+    public DepartmentResource(DepartmentRepository departmentRepository, Environment env) {
+        this.departmentRepository = departmentRepository;
+        this.env = env;
+    }
 
     @RequestMapping(value = {"/all"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed

@@ -21,8 +21,12 @@ import java.util.List;
 @RestController
 public class UsersResource {
     private final Logger log = LoggerFactory.getLogger(UsersResource.class);
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UsersResource(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = {"/rest/users"}, method = {RequestMethod.GET}, produces = {"application/json"})
     @Timed
