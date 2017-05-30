@@ -63,6 +63,13 @@ public class User implements Serializable {
         return this.login.equals(user.login);
     }
 
+    public User() {
+    }
+
+    public User(String login) {
+        this.login = login;
+    }
+
     public int hashCode() {
         return this.login.hashCode();
     }

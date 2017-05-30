@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class PaymentModeResource {
     @RequestMapping(value = {"/delete/{id}"}, method = {RequestMethod.DELETE}, produces = {"application/json"})
     @Timed
     public void delete(@PathVariable String id) {
-        paymentModeRepository.delete(Integer.valueOf(id));
+        paymentModeRepository.delete(new BigInteger(id));
     }
 
 }
